@@ -10,23 +10,37 @@ const $favoritesViewText = document.querySelector('.favorites-view-text');
 const notes = document.createElement('textarea');
 notes.setAttribute('id', 'notes');
 notes.textContent = notes.value;
-let currentImage;
-const noteDate = Date(Date.now());
+var currentImage;
+var noteDate = Date(Date.now());
+var loadingSpinner = document.querySelector('.lds-spinner');
+var image = document.querySelector('.image');
+var paw = document.querySelector('.fa-paw');
+var connectionMessage = document.querySelector('.connection-error');
 
 function handleClick(event) {
-  data.view = 'home-page';
-  const xhr = new XMLHttpRequest();
+  var xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://random.dog/woof.json');
   xhr.responseType = ('json');
-  xhr.addEventListener('load', function () {
-    data.view = 'home-page';
-    const img = document.querySelector('.image');
-    img.setAttribute('src', xhr.response.url);
-    currentImage = xhr.response.url;
-  });
+  xhr.addEventListener('load', () => {
+    if (xhr.status === 200) {
+      data.view = 'home-page';
+      if (xhr.response.length !== 0) {
+        loadingSpinner.classList.add('hidden');
+      }
+      image.classList.remove('hidden');
+      paw.classList.remove('hidden');
+      var img = document.querySelector('.image');
+      img.setAttribute('src', xhr.response.url);
+      currentImage = xhr.response.url;
+    } else {
+      connectionMessage.classList.remove('hidden');
+    }
+  }
+  );
   xhr.send();
 }
-let favoriteObject;
+
+var favoriteObject;
 function iconClick(event) {
   data.view = 'home-page';
   $icon.classList.toggle('clicked');
@@ -37,13 +51,10 @@ function iconClick(event) {
   };
   data.nextEntryId++;
   data.favorites.push(favoriteObject);
-  // $favorites.prepend(renderImages(favoriteObject));
-
 }
 
 function viewHomePage() {
   data.view = 'home-page';
-  // stayOnSamePageAfterRefresh();
 }
 function stayOnSamePageAfterRefresh() {
   if (data.view === 'favorites') {
@@ -110,9 +121,6 @@ function viewFavorites(event) {
   $button.textContent = 'Favorites';
   $favorites.classList.remove('hidden');
   $favoritesViewText.classList.remove('hidden');
-  // if (data.favorites.length === 0) {
-  //   $favoritesViewText = 'Nothing has been favorited';
-  // }
 }
 stayOnSamePageAfterRefresh();
 
