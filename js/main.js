@@ -1,32 +1,32 @@
-var $imageContainer = document.querySelector('.image-container');
-var $favoritesLink = document.querySelector('.favorites-link');
+const $imageContainer = document.querySelector('.image-container');
+const $favoritesLink = document.querySelector('.favorites-link');
 $favoritesLink.addEventListener('click', viewFavorites);
-var $button = document.querySelector('BUTTON');
+const $button = document.querySelector('BUTTON');
 $button.addEventListener('click', handleClick);
-var $icon = document.querySelector('.icon');
+const $icon = document.querySelector('.icon');
 $icon.addEventListener('click', iconClick);
-var $favorites = document.querySelector('.favorites');
-var $favoritesViewText = document.querySelector('.favorites-view-text');
-var notes = document.createElement('textarea');
+const $favorites = document.querySelector('.favorites');
+const $favoritesViewText = document.querySelector('.favorites-view-text');
+const notes = document.createElement('textarea');
 notes.setAttribute('id', 'notes');
 notes.textContent = notes.value;
-var currentImage;
-var noteDate = Date(Date.now());
+let currentImage;
+const noteDate = Date(Date.now());
 
 function handleClick(event) {
   data.view = 'home-page';
-  var xhr = new XMLHttpRequest();
+  const xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://random.dog/woof.json');
   xhr.responseType = ('json');
   xhr.addEventListener('load', function () {
     data.view = 'home-page';
-    var img = document.querySelector('.image');
+    const img = document.querySelector('.image');
     img.setAttribute('src', xhr.response.url);
     currentImage = xhr.response.url;
   });
   xhr.send();
 }
-var favoriteObject;
+let favoriteObject;
 function iconClick(event) {
   data.view = 'home-page';
   $icon.classList.toggle('clicked');
@@ -52,37 +52,37 @@ function stayOnSamePageAfterRefresh() {
   viewHomePage();
 }
 function renderImages(favorites) {
-  var saveBtn = document.createElement('button');
+  const saveBtn = document.createElement('button');
   saveBtn.addEventListener('click', handleSubmit);
   saveBtn.className = ('save-btn');
   saveBtn.textContent = 'SAVE';
   saveBtn.setAttribute('data-id', favorites.id);
-  var colHalfdiv = document.createElement('div');
+  const colHalfdiv = document.createElement('div');
   colHalfdiv.setAttribute('class', 'column');
   colHalfdiv.setAttribute('data-id', favorites.id);
-  var image = document.createElement('img');
+  const image = document.createElement('img');
   image.className = 'dom-image';
   image.setAttribute('src', favorites.photoUrl);
-  var h6 = document.createElement('h2');
+  const h6 = document.createElement('h2');
   h6.textContent = 'Notes:';
-  var textarea = document.createElement('textarea');
+  const textarea = document.createElement('textarea');
   textarea.setAttribute('id', `notes-${favorites.id}`);
   textarea.setAttribute('data-id', favorites.id);
-  var trashIcon = document.createElement('i');
+  const trashIcon = document.createElement('i');
   trashIcon.className = 'fa-solid fa-trash-can';
   trashIcon.setAttribute('id', `trash-${favorites.id}`);
   trashIcon.setAttribute('data-id', favorites.id);
   trashIcon.addEventListener('click', showModal);
-  var paragrpah = document.createElement('p');
+  const paragrpah = document.createElement('p');
   paragrpah.setAttribute('id', 'date');
   paragrpah.textContent = favorites.FavoriteDate;
-  var notesCreated = document.createElement('p');
+  const notesCreated = document.createElement('p');
   notesCreated.setAttribute('id', 'notes-date');
   notesCreated.textContent = favorites.Notesdate;
 
   // pre fill text content
   textarea.textContent = favorites.notes;
-  var editIcon = document.createElement('i');
+  const editIcon = document.createElement('i');
   editIcon.className = 'fas fa-pen';
   colHalfdiv.appendChild(image);
   colHalfdiv.appendChild(h6);
@@ -95,9 +95,9 @@ function renderImages(favorites) {
 }
 window.addEventListener('DOMContentLoaded', domContentLoaded);
 function domContentLoaded(event) {
-  for (var i = 0; i < data.favorites.length; i++) {
+  for (let i = 0; i < data.favorites.length; i++) {
     if (data.favorites[i] !== null) {
-      var entry = renderImages(data.favorites[i]);
+      const entry = renderImages(data.favorites[i]);
       $favorites.appendChild(entry);
     }
   }
@@ -120,10 +120,10 @@ var newFavoriteObject;
 
 function handleSubmit(event) {
   event.preventDefault();
-  var dataId = event.target.getAttribute('data-id');
-  var notes = document.getElementById(`notes-${dataId}`).value;
-  var datasetId = Number(document.getElementById(`notes-${dataId}`).dataset.id);
-  var dateNumber = Date(Date.now());
+  const dataId = event.target.getAttribute('data-id');
+  const notes = document.getElementById(`notes-${dataId}`).value;
+  const datasetId = Number(document.getElementById(`notes-${dataId}`).dataset.id);
+  const dateNumber = Date(Date.now());
   newFavoriteObject = {
     id: datasetId,
     photoUrl: data.favorites[Number(dataId)].photoUrl,
@@ -138,10 +138,10 @@ function handleSubmit(event) {
 }
 
 function deleteEntry(event) {
-  var dataId = event.target.getAttribute('data-id');
-  var datasetId = Number(document.getElementById(`trash-${dataId}`));
-  var favorites = document.querySelectorAll('.column');
-  for (var i = 0; i < data.favorites.length; i++) {
+  const dataId = event.target.getAttribute('data-id');
+  const datasetId = Number(document.getElementById(`trash-${dataId}`));
+  const favorites = document.querySelectorAll('.column');
+  for (let i = 0; i < data.favorites.length; i++) {
     var favoritesIdValue = favorites[i].getAttribute('data-id');
     var parsedValue = parseInt(favoritesIdValue);
     if (datasetId === parsedValue) {
@@ -153,11 +153,11 @@ function deleteEntry(event) {
   modal.classList.add('hidden');
   overlay.classList.add('hidden');
 }
-var modal = document.querySelector('#modal');
-var overlay = document.querySelector('#overlay');
-var confirmModal = document.querySelector('#confirm-modal');
+const modal = document.querySelector('#modal');
+const overlay = document.querySelector('#overlay');
+const confirmModal = document.querySelector('#confirm-modal');
 confirmModal.addEventListener('click', deleteEntry);
-var cancelBtn = document.querySelector('#close-modal-btn');
+const cancelBtn = document.querySelector('#close-modal-btn');
 cancelBtn.addEventListener('click', removeEntry);
 $favorites.addEventListener('click', showModal);
 
@@ -174,7 +174,7 @@ function removeEntry(event) {
 
 }
 
-var homeText = document.querySelector('.home');
+const homeText = document.querySelector('.home');
 homeText.addEventListener('click', clickHome);
 function clickHome(event) {
   data.view = 'home-page';
