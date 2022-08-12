@@ -27,24 +27,35 @@
       </div>
 
       <div data-view="home-page" class="row image-container column-half">
-        <img src="https://wtwp.com/wp-content/uploads/2015/06/placeholder-image.png" class="image" id="photoUrl">
-        <i class="fa-solid fa-paw fa-2x icon"></i>
+        <div class="lds-spinner">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <img src="https://wtwp.com/wp-content/uploads/2015/06/placeholder-image.png" class="image hidden" id="photoUrl">
+        <i class="fa-solid fa-paw fa-2x icon hidden"></i>
       </div>
-
+      <div class="connection-error hidden">
+        <h3>Unexpected error. Please try again later. </h3>
+      </div>
       <h2 class="favorites-view-text hidden">Favorites</h2>
 
       <div data-view="favorites" class="favorites hidden row">
         <form class="form">
-
           <div>
             <input type="submit" class="save-btn hidden" id="button" value="SAVE">
           </div>
         </form>
-
-
       </div>
-      <!-- <button class="date">ShowDate</button> -->
-      <!-- <p id="dateText">Button</p> -->
     </div>
     <div id="overlay" class="hidden overlay">
       <div id="modal" class="hidden">
