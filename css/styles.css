@@ -301,7 +301,7 @@ h5 {
   width: 6px;
   height: 18px;
   border-radius: 20%;
-  background: green;
+  background: black;
 }
 
 .lds-spinner div:nth-child(1) {
