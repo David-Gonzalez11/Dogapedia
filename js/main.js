@@ -13,22 +13,20 @@ notes.textContent = notes.value;
 var currentImage;
 var noteDate = Date(Date.now());
 var loadingSpinner = document.querySelector('.lds-spinner');
-var image = document.querySelector('.image');
-var paw = document.querySelector('.fa-paw');
 var connectionMessage = document.querySelector('.connection-error');
 
 function handleClick(event) {
+  loadingSpinner.className = ('lds-spinner');
   var xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://random.dog/woof.json');
   xhr.responseType = ('json');
   xhr.addEventListener('load', () => {
+    loadingSpinner.classList.add('hidden');
     if (xhr.status === 200) {
       data.view = 'home-page';
       if (xhr.response.length !== 0) {
         loadingSpinner.classList.add('hidden');
       }
-      image.classList.remove('hidden');
-      paw.classList.remove('hidden');
       var img = document.querySelector('.image');
       img.setAttribute('src', xhr.response.url);
       currentImage = xhr.response.url;
@@ -50,7 +48,9 @@ function iconClick(event) {
     FavoriteDate: 'Favorite created: ' + noteDate.toString()
   };
   data.nextEntryId++;
-  data.favorites.push(favoriteObject);
+  data.favorites.unshift(favoriteObject);
+  const newFavorite = renderImages(data.favorites[0]);
+  $favorites.prepend(newFavorite);
 }
 
 function viewHomePage() {
