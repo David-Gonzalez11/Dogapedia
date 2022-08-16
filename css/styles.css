@@ -1,5 +1,10 @@
+body,
+html {
+  overflow-x: hidden;
+}
+
 .container {
-  width: 900px;
+  width: 100vw;
   margin: auto;
 }
 
@@ -39,17 +44,17 @@ h1 {
   margin-top: 3rem;
   border-radius: 10px;
   background-color: rgb(190 243 253);
-  padding: 25px;
+  padding: 10px;
   margin-bottom: 2rem;
-  padding-left: 5rem;
-  padding-right: 5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   color: black;
   font-weight: 700;
-  font-size: xx-large;
+  font-size: x-large;
   font-family: serif;
   cursor: pointer;
   border-style: none;
-  margin-right: 30%;
+  margin-right: 15%;
 }
 
 button:hover {
@@ -142,8 +147,8 @@ li {
 }
 
 .image {
-  width: 650px;
-  height: 600px;
+  width: 300px;
+  height: 300px;
   position: relative;
   right: 2.5rem;
   border-radius: 10px;
@@ -218,76 +223,8 @@ h5 {
   right: 5rem;
 }
 
-@media screen and (max-width: 480px) {
-  .header {
-    width: 100%;
-  }
-
-  .dom-image {
-    width: 400px;
-  }
-
-  textarea {
-    width: 400px;
-  }
-
-  .favorites-view-text {
-    font-size: 20px;
-  }
-}
-
-@media screen and  (max-width: 390px) {
-  .generate-img {
-    margin-left: 5px;
-  }
-
-  .bigbutton {
-    padding: 5px;
-    font-size: 15px;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .image {
-    width: 300px;
-    height: 300px;
-  }
-
-  button {
-    padding: 0.5rem;
-    font-size: small;
-    position: relative;
-    right: 3rem;
-  }
-
-  .container {
-    width: 480px;
-  }
-
-  .fa-trash-can {
-    margin-left: 2rem;
-  }
-}
-
 #date {
   font-size: medium;
-}
-
-@media screen and (min-width: 768px) {
-  .favorites-view-text {
-    margin-left: 30px;
-  }
-
-  .favorites-link,
-  .home {
-    font-size: 23px;
-  }
-}
-
-@media screen and (min-width: 1280px) {
-  .favorites-view-text {
-    margin-left: 20px;
-  }
 }
 
 .lds-spinner {
@@ -382,5 +319,92 @@ h5 {
 
   100% {
     opacity: 0;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .favorites-view-text {
+    margin-left: 30px;
+  }
+
+  .favorites-link,
+  .home {
+    font-size: 23px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .favorites-view-text {
+    margin-left: 20px;
+  }
+
+  .bigbutton {
+    padding: 25px;
+    width: 15%;
+    margin-left: 10rem;
+  }
+
+  .image {
+    width: 600px;
+    height: 600px;
+  }
+}
+
+/* @media screen and (max-width: 480px) {
+
+} */
+
+@media screen and (max-width: 390px) {
+  .generate-img {
+    margin-right: 5%;
+  }
+
+  .bigbutton {
+    padding: 5px;
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .image {
+    width: 300px;
+    height: 300px;
+  }
+
+  button {
+    padding: 0.5rem;
+    font-size: small;
+    position: relative;
+    right: 3rem;
+  }
+
+  .container {
+    width: 480px;
+  }
+
+  .fa-trash-can {
+    margin-left: 2rem;
+  }
+
+  .bigbutton {
+    padding: 8px;
+    font-size: medium;
+    margin-right: 0;
+  }
+
+  .header {
+    width: 100%;
+  }
+
+  .dom-image {
+    width: 400px;
+  }
+
+  textarea {
+    width: 400px;
+  }
+
+  .favorites-view-text {
+    font-size: 20px;
   }
 }
