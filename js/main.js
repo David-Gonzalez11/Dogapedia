@@ -69,10 +69,12 @@ function renderImages(favorites) {
   saveBtn.textContent = 'SAVE';
   saveBtn.setAttribute('data-id', favorites.id);
   const colHalfdiv = document.createElement('div');
-  colHalfdiv.setAttribute('class', 'column');
+  colHalfdiv.setAttribute('class', 'column text-align');
   colHalfdiv.setAttribute('data-id', favorites.id);
   const image = document.createElement('img');
   image.className = 'dom-image';
+  const wrapButtons = document.createElement('div');
+  wrapButtons.setAttribute('class', 'space-between');
   image.setAttribute('src', favorites.photoUrl);
   const h6 = document.createElement('h2');
   h6.textContent = 'Notes:';
@@ -98,8 +100,9 @@ function renderImages(favorites) {
   colHalfdiv.appendChild(image);
   colHalfdiv.appendChild(h6);
   colHalfdiv.appendChild(textarea);
-  colHalfdiv.appendChild(saveBtn);
-  colHalfdiv.appendChild(trashIcon);
+  colHalfdiv.appendChild(wrapButtons);
+  wrapButtons.appendChild(saveBtn);
+  wrapButtons.appendChild(trashIcon);
   h6.appendChild(paragrpah);
   paragrpah.appendChild(notesCreated);
   return colHalfdiv;

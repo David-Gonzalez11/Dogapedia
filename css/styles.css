@@ -3,6 +3,10 @@ html {
   overflow-x: hidden;
 }
 
+.favorites {
+  width: 100vw;
+}
+
 .container {
   width: 100vw;
   margin: auto;
@@ -89,16 +93,17 @@ i {
 }
 
 .column {
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   justify-content: center;
   margin-top: 0;
-  width: calc(100% / 2);
+  width: 100vw;
   margin-left: 2.5rem;
 }
 
 .dom-image {
-  width: 650px;
-  height: 400px;
+  object-fit: contain;
+  width: 500px;
+  height: 500px;
   border-radius: 5px;
 }
 
@@ -107,7 +112,7 @@ h6 {
 }
 
 textarea {
-  width: 650px;
+  width: 500px;
   height: 40px;
   resize: none;
 }
@@ -146,12 +151,23 @@ li {
   justify-content: center;
 }
 
+.text-align {
+  text-align: center;
+}
+
 .image {
   width: 300px;
   height: 300px;
   position: relative;
   right: 2.5rem;
   border-radius: 10px;
+}
+
+.space-between {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  width: 100%;
 }
 
 .close-modal-btn {
@@ -219,12 +235,13 @@ h5 {
 }
 
 .fa-trash-can {
-  position: relative;
-  right: 5rem;
+  /* position: relative; */
+
+  /* right: 5rem; */
 }
 
 #date {
-  font-size: medium;
+  font-size: small;
 }
 
 .lds-spinner {
@@ -397,14 +414,19 @@ h5 {
   }
 
   .dom-image {
-    width: 400px;
+    width: 300px;
+    height: 200px;
   }
 
   textarea {
-    width: 400px;
+    width: 300px;
   }
 
   .favorites-view-text {
     font-size: 20px;
+  }
+
+  .save-btn {
+    margin-left: 3rem;
   }
 }
