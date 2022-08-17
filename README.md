@@ -2,7 +2,7 @@
 
 A dynamic HTML, CSS, and JavaScript solo project.
 
-A Web application for dog lovers who want to see a random image of a dog 
+A Web application for dog lovers who want to see a random image of a dog.
 I love dogs and I though why not have people be able to see a dog when they are feeling down. A dog always brightened up my day from seeing a dog in person or just seeing an Image of adorable dogs. App name gives a way to see images of dogs and create a note about the dog to save for later on. 
 # live Demo
 Try the application live at https://david-gonzalez11.github.io/Dogapedia/
