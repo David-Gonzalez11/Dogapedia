@@ -10,7 +10,7 @@ if (previousTodosJSON !== null) {
   data = JSON.parse(previousTodosJSON);
 }
 
-window.addEventListener('beforeunload', handleWindows);
+window.addEventListener('pagehide', handleWindows);
 function handleWindows(event) {
   const todosJSON = JSON.stringify(data);
   localStorage.setItem('Ajax-Project', todosJSON);
