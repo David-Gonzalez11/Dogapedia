@@ -1,4 +1,4 @@
-# ajax-project
+# Dogapedia
 
 A dynamic HTML, CSS, and JavaScript solo project.
 
@@ -26,6 +26,6 @@ Try the application live at []
 # Stretch Features to Implement
 - User can filter their favorites by notes 
 # Getting Started 
-- clone the repo https://github.com/David-Gonzalez11/ajax-project
+- clone the repo https://github.com/David-Gonzalez11/Dogapedia
 - open index.html in browser
 
