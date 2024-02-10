@@ -426,3 +426,7 @@ h5 {
     margin-left: 3rem;
   }
 }
+
+.submit-text {
+  color: green;
+}

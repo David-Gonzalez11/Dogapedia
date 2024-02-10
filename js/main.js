@@ -92,6 +92,9 @@ function renderImages(favorites) {
   const notesCreated = document.createElement('p');
   notesCreated.setAttribute('id', 'notes-date');
   notesCreated.textContent = favorites.Notesdate;
+  const saveEntryText = document.createElement('p');
+  saveEntryText.setAttribute('class', 'submit-text');
+  saveEntryText.textContent = 'Entry saved';
 
   // pre fill text content
   textarea.textContent = favorites.notes;
@@ -100,6 +103,7 @@ function renderImages(favorites) {
   colHalfdiv.appendChild(image);
   colHalfdiv.appendChild(h6);
   colHalfdiv.appendChild(textarea);
+  colHalfdiv.appendChild(saveEntryText);
   colHalfdiv.appendChild(wrapButtons);
   wrapButtons.appendChild(saveBtn);
   wrapButtons.appendChild(trashIcon);
