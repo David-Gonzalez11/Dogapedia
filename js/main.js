@@ -94,7 +94,7 @@ function renderImages(favorites) {
   notesCreated.textContent = favorites.Notesdate;
   const saveEntryText = document.createElement('p');
   saveEntryText.setAttribute('class', 'submit-text');
-  saveEntryText.textContent = 'Entry saved';
+  // saveEntryText.textContent = 'Entry saved';
 
   // pre fill text content
   textarea.textContent = favorites.notes;
@@ -109,6 +109,7 @@ function renderImages(favorites) {
   wrapButtons.appendChild(trashIcon);
   h6.appendChild(paragrpah);
   paragrpah.appendChild(notesCreated);
+
   return colHalfdiv;
 }
 window.addEventListener('DOMContentLoaded', domContentLoaded);
@@ -139,17 +140,25 @@ function handleSubmit(event) {
   const notes = document.getElementById(`notes-${dataId}`).value;
   const datasetId = Number(document.getElementById(`notes-${dataId}`).dataset.id);
   const dateNumber = Date(Date.now());
-  newFavoriteObject = {
-    id: datasetId,
-    photoUrl: data.favorites[Number(dataId)].photoUrl,
-    notes,
-    FavoriteDate: 'Favorite created: ' + dateNumber.toString(),
-    Notesdate: 'Created Notes: ' + noteDate.toString()
-  };
-
+  if (data.favorites[Number(dataId)]) {
+    newFavoriteObject = {
+      id: datasetId,
+      photoUrl: data.favorites[Number(dataId)].photoUrl,
+      notes,
+      FavoriteDate: 'Favorite created: ' + dateNumber.toString(),
+      Notesdate: 'Created Notes: ' + noteDate.toString()
+    };
+  }
   data.nextEntryId++;
   data.favorites[datasetId] = newFavoriteObject;
-
+  const submitTextElement = document.querySelector(`#notes-${dataId}`).parentNode.querySelector('.submit-text');
+  if (notes === '') {
+    // Entry is empty, do not display any message
+    submitTextElement.textContent = '';
+  } else {
+    // Entry is not empty, display the message "Entry Saved"
+    submitTextElement.textContent = 'Entry Saved';
+  }
 }
 
 function deleteEntry(event) {
