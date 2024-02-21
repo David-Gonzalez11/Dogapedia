@@ -33,6 +33,7 @@ function handleClick(event) {
     } else {
       connectionMessage.classList.remove('hidden');
     }
+
   }
   );
   xhr.send();
