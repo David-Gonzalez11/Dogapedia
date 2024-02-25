@@ -151,6 +151,9 @@ function handleSubmit(event) {
       Notesdate: "Created Notes: " + noteDate.toString(),
     };
   }
+   setTimeout(() => {
+  submitTextElement.textContent = ""
+}, 3000)
   data.nextEntryId++;
   data.favorites[datasetId] = newFavoriteObject;
   const submitTextElement = document
@@ -171,7 +174,10 @@ function deleteEntry(event) {
   const favorites = document.querySelectorAll(".column");
   for (let i = 0; i < data.favorites.length; i++) {
     var favoritesIdValue = favorites[i].getAttribute("data-id");
+    // deal with parsed value due to it being different from the dataSetId
     var parsedValue = parseInt(favoritesIdValue);
+    console.log("value of parsed value", parsedValue)
+    console.log("value of dataSetId" ,datasetId)
     if (datasetId === parsedValue) {
       data.favorites.splice(i, 1);
       favorites[i].remove();
@@ -181,6 +187,7 @@ function deleteEntry(event) {
   modal.classList.add("hidden");
   overlay.classList.add("hidden");
 }
+
 const modal = document.querySelector("#modal");
 const overlay = document.querySelector("#overlay");
 const confirmModal = document.querySelector("#confirm-modal");
